@@ -17,7 +17,7 @@ username
 u  
 &nbsp;&nbsp;&nbsp;Username of admin account. (Optional. Default: admin)
 
-url
+url  
 &nbsp;&nbsp;&nbsp;URL of router login page. (Optional. Default: _http://${ip}/platform.cgi_ )
 
 tries  
