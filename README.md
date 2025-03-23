@@ -1,7 +1,7 @@
 # Jio-Fiber-Reboot
 Jio Fiber Router Reboot
 
-### H3 CLI Options list
+### CLI Options list
 
 ip  
 ipAddress  
