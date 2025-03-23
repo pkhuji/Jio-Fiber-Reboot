@@ -1,31 +1,32 @@
 # Jio-Fiber-Reboot
 Jio Fiber Router Reboot
 
-CLI Options list
-  ip
-  ipAddress
-    IP address of jio router.
+### H3 CLI Options list
 
-  pwd
-  password
-  p
-    Pasword of admin account.
+ip  
+ipAddress  
+&nbsp;&nbsp;&nbsp;IP address of jio router.
 
-  user
-  username
-  u
-    Username of admin account. (Optional. Default: admin)
+pwd  
+password  
+p  
+&nbsp;&nbsp;&nbsp;Pasword of admin account.
 
-  url
-    URL of router login page. (Optional. Default: http://${ip}/platform.cgi)
+user  
+username  
+u  
+&nbsp;&nbsp;&nbsp;Username of admin account. (Optional. Default: admin)
 
-  tries
-  t
-    Maximum tries. (Optional. Default: 1)
+url
+&nbsp;&nbsp;&nbsp;URL of router login page. (Optional. Default: _http://${ip}/platform.cgi_ )
 
-  wait
-  w
-    Wait (in seconds) between tries. (Optional. Default: 1 second)
+tries  
+t  
+&nbsp;&nbsp;&nbsp;Maximum tries. (Optional. Default: 1)
 
-Example: 
-  node jioFiberReboot.js ip=192.168.29.1 pwd=password t=2 w=5
+wait  
+w  
+&nbsp;&nbsp;&nbsp;Wait (in seconds) between tries. (Optional. Default: 1 second)
+
+Example:  
+`node jioFiberReboot.js ip=192.168.29.1 pwd=password t=2 w=5`
