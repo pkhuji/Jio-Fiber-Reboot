@@ -1,10 +1,13 @@
-# Jio-Fiber-Reboot  
+# Jio-Fiber-Reboot
 
-Nodejs script to reboot Jio-Fiber router.  
+Nodejs script to reboot Jio-Fiber router.
 You can run it with Nodejs **v16** or above and use cron job for routine reboot.
 
 Example:  
-`node index.mjs -ip=192.168.29.1 -pwd=password -t=2 -w=5`
+
+```
+node index.mjs -ip=192.168.29.1 -pwd=password -t=2 -w=5
+```
 
 ### CLI Options List
 
