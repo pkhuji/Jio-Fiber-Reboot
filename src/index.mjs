@@ -1,5 +1,5 @@
-import { isStringFull, isString, throwError, isNumber, isArrayFull, sleepPromise, hideText } from './my-modules/common-utils/js-utils.mjs';
-import { getProcessArgs, httpRequest, showErrorOrNotification } from './my-modules/common-utils/node-utils.mjs';
+import { isStringFull, isString, throwError, isNumber, isArrayFull, sleepPromise, hideText } from './common-utils/js-utils.mjs';
+import { getProcessArgs, httpRequest, showErrorOrNotification } from './common-utils/node-utils.mjs';
 import { EOL } from 'os';
 
 let {
