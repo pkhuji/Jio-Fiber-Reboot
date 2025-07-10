@@ -110,7 +110,7 @@ let res;
     } catch (e) {
       continue;
     }
-    success = /Router will be up in/.test(data);
+    success = /Router will be up in/g.test(data);
     if (!success) {
       await sleepPromise(wait);
     }
