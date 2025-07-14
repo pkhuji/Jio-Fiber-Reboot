@@ -79,7 +79,7 @@ let res;
       break;
     }
     tried++;
-    {
+    if (!rebootReqPayload.token) {
       try {
         res = await httpRequest(url, {
           method: "POST",
