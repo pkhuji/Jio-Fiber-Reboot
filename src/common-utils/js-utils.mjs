@@ -126,32 +126,37 @@ function getTimeInHMS({
   }
   if (format.includes("h")) {
     let hours = local ? d.getHours() : d.getUTCHours();
-    if (format.includes("ap") || format.includes("AP")) {
+    if (stringIncludesNoCase(format, "ap")) {
       ap = hours >= 12 ? "pm" : "am";
       hours = hours % 12;
       hours = hours ? hours : 12;
+      if (format.includes("ap")) {
+        format = format.split("ap").join(ap);
+      } else if (format.includes("AP")) {
+        format = format.split("AP").join(ap.toUpperCase());
+      }
     }
     hours = hours.toString();
-    if (prependZero && hours.length === 1) hours = "0" + hours;
+    if (prependZero && hours.length === 1) {
+      hours = "0" + hours;
+    }
     format = format.split("h").join(hours);
   }
   if (format.includes("mins")) {
     let minutes = local ? d.getMinutes() : d.getUTCMinutes();
     minutes = minutes.toString();
-    if (prependZero && minutes.length === 1) minutes = "0" + minutes;
+    if (prependZero && minutes.length === 1) {
+      minutes = "0" + minutes;
+    }
     format = format.split("mins").join(minutes);
   }
   if (format.includes("ss")) {
     let seconds = local ? d.getSeconds() : d.getUTCSeconds();
     seconds = seconds.toString();
-    if (prependZero && seconds.length === 1) seconds = "0" + seconds;
+    if (prependZero && seconds.length === 1) {
+      seconds = "0" + seconds;
+    }
     format = format.split("ss").join(seconds);
-  }
-  if (format.includes("ap")) {
-    format = format.split("ap").join(ap);
-  }
-  if (format.includes("AP")) {
-    format = format.split("AP").join(ap.toUpperCase());
   }
   return format;
 }

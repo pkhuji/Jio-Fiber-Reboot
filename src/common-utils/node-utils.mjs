@@ -271,26 +271,40 @@ function isCmdOk(
     return checkOutput(output);
   })();
 }
-function getProcessArgs({ raw = false } = {}) {
+function getProcessArgs({
+  raw = false,
+  parseNum = true,
+  parseBool = true,
+} = {}) {
   let args = process.argv.slice(2);
   if (raw) {
     return args;
   }
   let obj = {};
   let otherParams = [];
+  let index = -1;
+  let skipIndexes = [];
   for (let s of args) {
+    index++;
+    if (skipIndexes.includes(index)) {
+      continue;
+    }
     if (/^([\-]+)/.test(s)) {
       s = s.replace(/^\-+/, "");
       let split1 = s.split("=");
       let key = split1.shift();
       let val = true;
       if (isArrayFull(split1)) {
-        val = removeQuotes(split1.join("="));
-        if (val === "true") {
-          val = true;
-        } else if (val === "false") {
-          val = false;
-        } else if (isFloat(val, { parse: true, negative: true })) {
+        val = split1.join("=");
+      } else if (args[index + 1] && !/^([\-]+)/.test(args[index + 1])) {
+        val = args[index + 1];
+        skipIndexes.push(index + 1);
+      }
+      if (parseBool && (val === "true" || val === "false")) {
+        val = val === "true";
+      } else if (isString(val)) {
+        val = removeQuotes(val);
+        if (parseNum && isFloat(val, { parse: true, negative: true })) {
           val = parseFloat(val);
         }
       }
