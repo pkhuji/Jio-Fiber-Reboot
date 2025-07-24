@@ -1,4 +1,4 @@
-import { isStringFull, isString, throwError, isNumber, isArrayFull, sleepPromise, hideText } from './common-utils/js-utils.mjs';
+import { isStringFull, isString, throwError, isNumber, sleepPromise, isArrayFull, hideText } from './common-utils/js-utils.mjs';
 import { getProcessArgs, httpRequest, showErrorOrNotification } from './common-utils/node-utils.mjs';
 import { EOL } from 'os';
 
@@ -73,12 +73,17 @@ let rebootReqPayload = {
 let tried = 0;
 let success = false;
 let res;
+let firstLoop = true;
 (async () => {
   while (!success) {
     if (tried >= tries) {
       break;
     }
     tried++;
+    if (!success && !firstLoop) {
+      await sleepPromise(wait);
+    }
+    firstLoop = false;
     if (!rebootReqPayload.token) {
       try {
         res = await httpRequest(url, {
@@ -110,10 +115,7 @@ let res;
     } catch (e) {
       continue;
     }
-    success = /Router will be up in/g.test(data);
-    if (!success) {
-      await sleepPromise(wait);
-    }
+    success = /Router will be up in/i.test(data);
   }
   if (success) {
     showErrorOrNotification([
