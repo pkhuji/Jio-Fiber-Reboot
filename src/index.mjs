@@ -73,17 +73,15 @@ let rebootReqPayload = {
 let tried = 0;
 let success = false;
 let res;
-let firstLoop = true;
 (async () => {
   while (!success) {
     if (tried >= tries) {
       break;
     }
-    tried++;
-    if (!success && !firstLoop) {
+    if (tried > 0) {
       await sleepPromise(wait);
     }
-    firstLoop = false;
+    tried++;
     if (!rebootReqPayload.token) {
       try {
         res = await httpRequest(url, {
