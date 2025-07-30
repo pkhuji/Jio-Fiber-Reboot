@@ -118,12 +118,12 @@ let res;
   if (success) {
     showErrorOrNotification([
       `Jio Fiber Router at ${ip} restarted successfully!`,
-      `Total tries: ${tries}`,
+      `Total tries: ${tried}`,
     ]);
   } else {
     let notify = [
       "Error restarting Jio Router!",
-      `Tries: ${tries}`,
+      `Tries: ${tried}`,
       `Timeout: ${timeout} seconds`,
       `Wait between tries: ${wait} seconds.`,
       `Ip: ${ip}. Username: ${user}`,
