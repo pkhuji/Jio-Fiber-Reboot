@@ -9,6 +9,13 @@ Example:
 node index.mjs -ip=192.168.29.1 -pwd=password -t=2 -w=5
 ```
 
+Cron job example:  
+
+```
+58 2 * * * node /full/path/to/jio-router-reboot/src/index.mjs -ip=192.168.29.1 -pwd=password -t=2 -w=5 >> "/full/path/to/log-file/jioFiberReboot.log" 2>&1
+```
+This cron job will reboot Jio Fiber router at 2:58 AM every day and command output will be saved to file /full/path/to/log-file/jioFiberReboot.log
+
 ### CLI Options List
 
 -ip | -ipAddress  
